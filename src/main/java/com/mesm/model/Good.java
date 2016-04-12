@@ -10,7 +10,7 @@ import java.util.Set;
  * Created by hrz on 2016/4/12.
  */
 @Entity
-@Table(name = "Good")
+@Table(name = "good")
 public class Good extends BaseEntity {
     private String id;
     private Seller seller;
