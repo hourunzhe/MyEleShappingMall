@@ -3,6 +3,7 @@ package com.mesm.cofig;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
@@ -18,6 +19,7 @@ import java.util.Properties;
 @EnableJpaRepositories("com.mesm")
 @EnableTransactionManagement
 @EnableSpringDataWebSupport
+@PropertySource("classpath:application.properties")
 public class ApplicationConfiguration {
   private static final String[] ENTITY_PACKAGES = {
           "com.mesm.model"
