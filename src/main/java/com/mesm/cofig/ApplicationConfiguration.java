@@ -15,7 +15,7 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@EnableJpaRepositories("com.mesm.repositories")
+@EnableJpaRepositories("com.mesm")
 @EnableTransactionManagement
 @EnableSpringDataWebSupport
 public class ApplicationConfiguration {
@@ -23,10 +23,6 @@ public class ApplicationConfiguration {
           "com.mesm.model"
   };
 
-  private static final String PROPERTY_NAME_DB_DRIVER_CLASS = "com.mysql.jdbc.Driver";
-  private static final String PROPERTY_NAME_DB_PASSWORD = "798881262";
-  private static final String PROPERTY_NAME_DB_URL = "jdbc:mysql://localhost:3306/mesm?useUnicode=true&amp;characterEncoding=UTF-8";
-  private static final String PROPERTY_NAME_DB_USER = "hrz";
   private static final String PROPERTY_NAME_HIBERNATE_DIALECT = "hibernate.dialect";
   private static final String PROPERTY_NAME_HIBERNATE_FORMAT_SQL = "hibernate.format_sql";
   private static final String PROPERTY_NAME_HIBERNATE_HBM2DDL_AUTO = "hibernate.hbm2ddl.auto";
@@ -44,11 +40,10 @@ public class ApplicationConfiguration {
   @Bean(destroyMethod = "close")
   DataSource dataSource(Environment env) {
     BasicDataSource dataSource = new BasicDataSource();
-
-    dataSource.setDriverClassName(env.getRequiredProperty(PROPERTY_NAME_DB_DRIVER_CLASS));
-    dataSource.setUrl(env.getRequiredProperty(PROPERTY_NAME_DB_URL));
-    dataSource.setUsername(env.getRequiredProperty(PROPERTY_NAME_DB_USER));
-    dataSource.setPassword(env.getRequiredProperty(PROPERTY_NAME_DB_PASSWORD));
+    dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+    dataSource.setUrl("jdbc:mysql://localhost:3306/mesm?useUnicode=true&amp;characterEncoding=UTF-8");
+    dataSource.setUsername("hrz");
+    dataSource.setPassword("798881262");
 
     return dataSource;
   }
