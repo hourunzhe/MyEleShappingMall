@@ -16,7 +16,7 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@EnableJpaRepositories("com.mesm")
+@EnableJpaRepositories("com.mesm.repositories")
 @EnableTransactionManagement
 @EnableSpringDataWebSupport
 @PropertySource("classpath:application.properties")
@@ -28,7 +28,7 @@ public class ApplicationConfiguration {
   private static final String PROPERTY_NAME_HIBERNATE_DIALECT = "hibernate.dialect";
   private static final String PROPERTY_NAME_HIBERNATE_FORMAT_SQL = "hibernate.format_sql";
   private static final String PROPERTY_NAME_HIBERNATE_HBM2DDL_AUTO = "hibernate.hbm2ddl.auto";
-  private static final String PROPERTY_NAME_HIBERNATE_NAMING_STRATEGY = "hibernate.ejb.naming_strategy";
+  //private static final String PROPERTY_NAME_HIBERNATE_NAMING_STRATEGY = "hibernate.ejb.naming_strategy";
   private static final String PROPERTY_NAME_HIBERNATE_SHOW_SQL = "hibernate.show_sql";
 
 
@@ -46,7 +46,6 @@ public class ApplicationConfiguration {
     dataSource.setUrl("jdbc:mysql://localhost:3306/mesm?useUnicode=true&amp;characterEncoding=UTF-8");
     dataSource.setUsername("hrz");
     dataSource.setPassword("798881262");
-
     return dataSource;
   }
 
@@ -75,7 +74,7 @@ public class ApplicationConfiguration {
 
     //Configures the naming strategy that is used when Hibernate creates
     //new database objects and schema elements
-    jpaProperties.put(PROPERTY_NAME_HIBERNATE_NAMING_STRATEGY, env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_NAMING_STRATEGY));
+    //jpaProperties.put(PROPERTY_NAME_HIBERNATE_NAMING_STRATEGY, env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_NAMING_STRATEGY));
 
     //If the value of this property is true, Hibernate writes all SQL
     //statements to the console.

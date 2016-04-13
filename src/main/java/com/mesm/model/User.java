@@ -14,6 +14,7 @@ import java.util.Set;
 public class User extends BaseEntity{
     private String id;
     private String userName;
+    private String password;
     private int role;
     private String address;
     private String phone;
@@ -38,6 +39,16 @@ public class User extends BaseEntity{
     public void setUserName(String userName) {
         this.userName = userName;
     }
+
+    @Column(name = "password")
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Column(name = "role")
     public int getRole() {
         return role;
