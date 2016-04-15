@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.http.MediaType;
 import org.springframework.web.accept.ContentNegotiationManagerFactoryBean;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
@@ -29,21 +31,27 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
 	@Bean
 	public ContentNegotiatingViewResolver contentViewResolver() throws Exception {
-		/*ContentNegotiationManagerFactoryBean contentNegotiationManager = new ContentNegotiationManagerFactoryBean();
-		contentNegotiationManager.addMediaType("json", MediaType.APPLICATION_JSON);*/
+		ContentNegotiationManagerFactoryBean contentNegotiationManager = new ContentNegotiationManagerFactoryBean();
+		contentNegotiationManager.addMediaType("json", MediaType.APPLICATION_JSON);
 
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
 		viewResolver.setPrefix("/WEB-INF/jsp/");
 		viewResolver.setSuffix(".jsp");
-
-		/*MappingJackson2JsonView defaultView = new MappingJackson2JsonView();
-		defaultView.setExtractValueFromSingleKeyModel(true);*/
+		MappingJackson2JsonView defaultView = new MappingJackson2JsonView();
+		defaultView.setExtractValueFromSingleKeyModel(true);
 
 		ContentNegotiatingViewResolver contentViewResolver = new ContentNegotiatingViewResolver();
-		/*contentViewResolver.setContentNegotiationManager(contentNegotiationManager.getObject());*/
+		contentViewResolver.setContentNegotiationManager(contentNegotiationManager.getObject());
 		contentViewResolver.setViewResolvers(Arrays.<ViewResolver>asList(viewResolver));
-		/*contentViewResolver.setDefaultViews(Arrays.<View>asList(defaultView));*/
+		contentViewResolver.setDefaultViews(Arrays.<View>asList(defaultView));
 		return contentViewResolver;
+	}
+
+	@Bean
+	CommonsMultipartResolver multipartResolver() {
+		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+		multipartResolver.setMaxUploadSize(10485760);
+		return multipartResolver;
 	}
 	@Override
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {

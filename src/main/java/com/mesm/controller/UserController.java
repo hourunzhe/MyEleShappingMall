@@ -26,10 +26,10 @@ public class UserController {
         try {
             User user = userRepository.findByPasswordAndUserName(MD5Util.MD5(password), userName);
             if (user == null) {
-                return "fail";
+                return "notexist";
             } else {
                 httpSession.setAttribute("userName", userName);
-                return "success";
+                return "exist";
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -43,12 +43,13 @@ public class UserController {
         try {
             User oldUser = userRepository.findByUserName(user.getUserName());
             if (oldUser == null) {
+                user.setRole(1);
                 user.setPassword(MD5Util.MD5(user.getPassword()));
                 userRepository.save(user);
                 httpSession.setAttribute("userName", user.getUserName());
                 return "success";
             } else {
-                return "haveOne";
+                return "exist";
             }
         } catch (Exception e) {
             e.printStackTrace();
