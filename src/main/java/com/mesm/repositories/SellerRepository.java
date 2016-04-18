@@ -14,4 +14,7 @@ public interface SellerRepository extends CrudRepository<Seller, String> {
 
     @Query("select new Seller(id,userName,sellerName,password,phone,photo,type,address) from Seller where id=?1")
     Seller findById(String sellerId);
+
+    @Query("select new Seller(id,userName,sellerName,password,phone,photo,type,address) from Seller where userName=?1")
+    Seller findBySellerName(String sellerName);
 }

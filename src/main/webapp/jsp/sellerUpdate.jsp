@@ -41,6 +41,7 @@
            %>
             var sellerId = '<%=sellerId%>';
             var sellercurrent;
+            var path;
             $.ajax({
                 url: "seller/findInfo?sellerId=" + sellerId + "",
                 success: function (data) {
@@ -77,6 +78,7 @@
                             dataType: 'text',
                             success: function (data) {
                                 alert("上传成功！");
+                                path = data;
                             },
                             error: function (data) {
 
@@ -97,6 +99,7 @@
                     id: sellerId,
                     sellerName: sellername,
                     address: address,
+                    photo: path,
                     phone: phone,
                     type: type,
                     userName: sellercurrent.userName,
@@ -126,7 +129,7 @@
         </div>
         <div class="" id="title" style="">商家信息管理</div>
     </div>
-    <form class="form-horizontal" id="form" action="user!regist.action" method="post">
+    <form class="form-horizontal" id="form" action="" method="post">
         <div class="alert alert-danger col-sm-12 col-xs-12" role="alert" id="warn" style="display:none;">
             <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>

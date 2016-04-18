@@ -26,9 +26,8 @@ public class FileController {
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HH_mm_ss");
         String time = sdf.format(date);
-        String path = rq.getRealPath("/") + "uploadPicture" + "\\" + time;
-        System.out.print(path);
-        FileOutputStream op = new FileOutputStream(path);
+        String path = rq.getServletContext().getRealPath("/") + "uploadPicture" + "\\" + time + ".jpg";
+        /*FileOutputStream op = new FileOutputStream(path);
         InputStream is = file.getInputStream();
         byte[] buffer = new byte[1024 * 1024];
         int bytesum = 0;
@@ -39,7 +38,9 @@ public class FileController {
             op.flush();
         }
         op.close();
-        is.close();
-        return "success";
+        is.close();*/
+        File newFile = new File(path);
+        file.transferTo(newFile);
+        return time + ".jpg";
     }
 }
