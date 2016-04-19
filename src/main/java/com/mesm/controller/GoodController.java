@@ -27,9 +27,11 @@ public class GoodController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String add(Good good, HttpServletRequest rq) {
         try {
-            String userName = (String) rq.getSession().getAttribute("username");
+            String userName = (String) rq.getSession().getAttribute("userName");
             Seller seller = sellerRepository.findByUserName(userName);
             good.setSeller(seller);
+            good.setPrice(0);
+            good.setAppraiseTotal(0);
             goodRepository.save(good);
             return "success";
         } catch (Exception e) {
