@@ -15,12 +15,12 @@ function loadFirst(sellerName) {
         success: function (data) {
             seller = data;
             loadTop(data);
+            loadGoods(1);
         }
     });
-
-    /*loadGoods();*/
     return;
 }
+
 
 
 function loadTop(data) {
@@ -43,5 +43,70 @@ function loadTop(data) {
     return;
 
 }
+
+function loadGoods(page){
+    $("#right").html("");
+    $.ajax({
+        url:"good/showForSeller?page="+page,
+        type:"get",
+        success:function(data){
+            var goods = data.goods;
+            var pageCount = data.pageCount;
+            var nowPage = data.page;
+            for(var i = 0; i<goods.length; i++) {
+                $("#right").append(
+                    "<div id ='' style ='margin-top: 10px' class='col-lg-4 col-md-4 col-sm-6 col-xs-6'>" +
+                    "<a class='thumbnail'>" +
+                    "<img width='500px' height='500px' " +
+                    "src='http://localhost:8080/MyEleShoppingMall/uploadPicture/"+goods[i].photo+"' alt=''>" +
+                    "<div class='caption'>" +
+                    "<h3><strong>"+goods[i].goodName+"</strong></h3>" +
+                    "<div>"+goods[i].price+"&nbsp;&nbsp;<span class ='glyphicon glyphicon-yen'></span></div>"+
+                        "<div >已售<strong style='color: red'>&nbsp;"+goods[i].sales+"&nbsp;</strong>件</div>"+
+                    "</div>" +
+                    "</a>" +
+                    "</div>"
+                );
+            }
+            loadPage(pageCount,nowPage);
+        }
+
+    });
+
+}
+function loadPage(pageCount,page){
+    $("#pageDiv").html("");
+    $("#pageDiv").append(
+        "<li>"+
+        "<a href='javascript:;' onclick='loadGoods("+(page-1)+")' aria-label='Previous'>"+
+        "<span aria-hidden='true'>&laquo;</span>"+
+        "</a>"+
+        "</li>"
+    );
+    for(var i = 1;i<=pageCount;i++ ){
+        if(i == page){
+            $("#pageDiv").append(
+                "<li class = 'active'>"+
+                "<a href='javascript:;' onclick='loadGoods("+(i)+")' >"+ i +"</a>"+
+                "</li>"
+            );
+        }else{
+            $("#pageDiv").append(
+                "<li>"+
+                "<a href='javascript:;' onclick='loadGoods("+(i)+")'>"+ i +"</a>"+
+                "</li>"
+            );
+        }
+    }
+    $("#pageDiv").append(
+        "<li>"+
+        "<a  href='javascript:;' onclick='loadGoods("+(page+1)+")' aria-label='Next'>"+
+        "<span aria-hidden='true'>&raquo;</span>"+
+        "</a>"+
+        "</li>"
+    );
+}
+
+
 
 

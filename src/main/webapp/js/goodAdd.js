@@ -46,7 +46,9 @@ $(document).ready(function () {
             }
         )
     });
-
+    $("#return").click(function(){
+        location.href="jsp/sellerIndex.jsp";
+    });
     $("#submit").click(function(){
         price = $("#price").val();
         goodName = $("#goodName").val();
@@ -98,4 +100,5 @@ $(document).ready(function () {
             }
     });
     });
+
 });

@@ -35,8 +35,10 @@
     </style>
     <script type="text/javascript">
         $(document).ready(function () {
+
             var sellerName = <%=request.getSession().getAttribute("userName")%>;
             var sellerId = '<%=request.getSession().getAttribute("sellerId")%>';
+            loadFirst(sellerName);
             $("#top").on("click", "#update", function () {
                 location.href = "jsp/sellerUpdate.jsp?sellerId=" + sellerId;
             });
@@ -44,8 +46,6 @@
             $("#top").on("click", "#add", function () {
                 location.href = "jsp/goodAdd.jsp";
             });
-
-            loadFirst(sellerName);
         });
 
     </script>
@@ -69,6 +69,11 @@
     </ul>
     <div id="right" class="container-fluid  col-lg-9  col-md-9 col-sm-8  col-xs-12">
     </div>
+    <nav class="col-lg-offset-3 col-md-offset-3 col-sm-offset-4">
+        <ul class="pagination" id = "pageDiv">
+
+        </ul>
+    </nav>
 </div>
 <footer>
     <small>长沙理工大学计算机与通信工程学院</small>

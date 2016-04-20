@@ -21,6 +21,19 @@ public class Good extends BaseEntity {
     private String photo;
     private int appraiseTotal;
     private java.util.Set<Appraise> appraises = new HashSet<Appraise>();
+
+    public Good() {
+    }
+
+    public Good(String id, String goodName, int sales, float price, String photo, int appraiseTotal) {
+        this.id = id;
+        this.goodName = goodName;
+        this.sales = sales;
+        this.price = price;
+        this.photo = photo;
+        this.appraiseTotal = appraiseTotal;
+    }
+
     @Id
     @Column(name = "id")
     @GeneratedValue(generator = "uuid")

@@ -105,8 +105,13 @@
         })
     </script>
     </form>
-    <div class="col-sm-offset-2 col-sm-3 col-xs-offset-2 col-xs-3">
+    <div class="col-sm-offset-2 col-sm-1 col-xs-offset-2 col-xs-1">
         <button type="submit" id="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span>
+        </button>
+    </div>
+    <div class=" col-sm-1 col-xs-1">
+        <button type="submit" id="return" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span>
+        &nbsp;&nbsp;返回
         </button>
     </div>
 </div>
