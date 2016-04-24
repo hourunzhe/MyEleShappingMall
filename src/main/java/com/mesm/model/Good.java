@@ -33,6 +33,18 @@ public class Good extends BaseEntity {
         this.photo = photo;
         this.appraiseTotal = appraiseTotal;
     }
+    public Good(String id, String goodName, int sales, float price, String photo, int appraiseTotal,String description,String sellerName) {
+        this.id = id;
+        this.goodName = goodName;
+        this.sales = sales;
+        this.price = price;
+        this.photo = photo;
+        this.appraiseTotal = appraiseTotal;
+        this.description =description;
+        Seller seller = new Seller();
+        seller.setSellerName(sellerName);
+        this.seller=seller;
+    }
 
     @Id
     @Column(name = "id")

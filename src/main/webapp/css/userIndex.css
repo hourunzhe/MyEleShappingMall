@@ -1,0 +1,37 @@
+#head{
+    border-bottom:2px solid #337AB7;
+    padding-bottom:10px;
+    /* 	color:#337AB7 */
+}
+#title{
+    color:white;
+    marin-left:100px;
+}
+#nav{
+    background-color: #337AB7;
+    color:#337AB7;
+}
+#picture{
+    width:100px;
+    height:100px;
+}
+body{
+    background-color:#F5F5F5
+}
+#score{
+    font-family: \5FAE\8F6F\96C5\9ED1;
+    font-size: 34px;
+    font-weight: 900;
+}
+#scorediv{
+    color: #898989;
+    text-align:center;
+    margin-top:20px;
+}
+footer{
+    color: #999;
+    text-align: center;
+    font-size: 12px;
+    font-family: initial;
+    margin-top:70px;
+}

@@ -196,7 +196,7 @@
 
         //,autoSyncData:true //自动同步编辑器要提交的数据
 
-        //,emotionLocalization:false //是否开启表情本地化，默认关闭。若要开启请确保emotion文件夹下包含官网提供的images表情文件夹
+        ,emotionLocalization:true//是否开启表情本地化，默认关闭。若要开启请确保emotion文件夹下包含官网提供的images表情文件夹
 
         //,allHtmlEnabled:false //提交到后台的数据是否包含整个html字符串
 

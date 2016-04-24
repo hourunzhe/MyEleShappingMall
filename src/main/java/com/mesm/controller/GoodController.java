@@ -48,21 +48,131 @@ public class GoodController {
     @ResponseBody
     @RequestMapping(value = "/showForSeller", method = RequestMethod.GET)
     public Map<String ,Object> findForSeller(int page,HttpServletRequest rq){
-        String userName = (String)rq.getSession().getAttribute("userName");
-        int count = goodRepository.findAllForSeller(userName);
-        int pageCount = (int)Math.ceil((double)count/9);
-        if(page < 0){
-            page = 0;
+        try {
+            String userName = (String)rq.getSession().getAttribute("userName");
+            int count = goodRepository.findAllForSeller(userName);
+            int pageCount = (int)Math.ceil((double)count/9);
+
+            if(page > pageCount){
+                page = pageCount;
+            }
+            if(page <= 0){
+                page = 1;
+            }
+            PageRequest pageRequest = new PageRequest(page-1,9);
+            Page<Good> goods = goodRepository.findForSeller(userName,pageRequest);
+            Map<String,Object> map = new HashMap<String,Object>();
+            map.put("page",page);
+            map.put("pageCount",pageCount);
+            map.put("goods",goods.getContent());
+            return map;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
-        if(page > pageCount){
-            page = pageCount;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    public String delete(String id){
+        try{
+            goodRepository.delete(id);
+            return "success";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "fail";
         }
-        PageRequest pageRequest = new PageRequest(page-1,9);
-        Page<Good> goods = goodRepository.findForSeller(userName,pageRequest);
-        Map<String,Object> map = new HashMap<String,Object>();
-        map.put("page",page);
-        map.put("pageCount",pageCount);
-        map.put("goods",goods.getContent());
-        return map;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/listGoodByType", method = RequestMethod.POST)
+    public Map<String ,Object> listByType(String type,int page,HttpServletRequest rq){
+        try {
+
+            int count = goodRepository.findCountBytype(type);
+            int pageCount = (int)Math.ceil((double)count/12);
+
+            if(page > pageCount){
+                page = pageCount;
+
+            }
+            if(page <= 0){
+                page = 1;
+            }
+            PageRequest pageRequest = new PageRequest(page-1,12);
+            Page<Good> goods = goodRepository.findByType(type,pageRequest);
+            Map<String,Object> map = new HashMap<String,Object>();
+            map.put("page",page);
+            map.put("pageCount",pageCount);
+            map.put("goods",goods.getContent());
+            return map;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/listGoodBySearch", method = RequestMethod.POST)
+    public Map<String ,Object> listBySearch(String search,int page,HttpServletRequest rq){
+        try {
+
+            int count = goodRepository.findCountBySearch(search);
+            int pageCount = (int)Math.ceil((double)count/12);
+            if(page > pageCount){
+                page = pageCount;
+            }
+            if(page <= 0){
+                page = 1;
+            }
+            PageRequest pageRequest = new PageRequest(page-1,12);
+            Page<Good> goods = goodRepository.findBySearch("%"+search+"%",pageRequest);
+            Map<String,Object> map = new HashMap<String,Object>();
+            map.put("page",page);
+            map.put("pageCount",pageCount);
+            map.put("goods",goods.getContent());
+            return map;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/listGoodAll", method = RequestMethod.POST)
+    public Map<String ,Object> listAll(int page,HttpServletRequest rq){
+        try {
+
+            int count = goodRepository.findCount();
+            int pageCount = (int)Math.ceil((double)count/12);
+            if(page > pageCount){
+                page = pageCount;
+            }
+            if(page <= 0){
+                page = 1;
+            }
+            PageRequest pageRequest = new PageRequest(page-1,12);
+            Page<Good> goods = goodRepository.findAllGoods(pageRequest);
+            Map<String,Object> map = new HashMap<String,Object>();
+            map.put("page",page);
+            map.put("pageCount",pageCount);
+            map.put("goods",goods.getContent());
+            return map;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/showGood", method = RequestMethod.POST)
+    public Good showGood(String id){
+        try{
+            Good good = goodRepository.findById(id);
+            return good;
+        }catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

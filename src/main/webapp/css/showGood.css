@@ -1,0 +1,85 @@
+#head {
+    border-bottom-color: #337AB7;
+    border-bottom: 2px solid #337AB7;
+}
+
+#limit {
+    width: 200px;
+    border-right: 1px solid #337AB7;
+    margin-left: 75px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    float: left;
+}
+
+#top {
+    border: 2px solid #337AB7;
+    margin-top: 10px;
+    border-radius: 30px;
+    padding-bottom: 15px;
+}
+
+#sellerName {
+    font-family: 宋体;
+    font-weight: 900;
+    font-size: 40px;
+    text-align: center;
+
+}
+
+#phone, #address, #type,#seller{
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+#phone_img,#seller_img, #address_img, #type_img {
+    color: #337AB7;
+}
+
+#photo {
+    float: left;
+    width: 200px;
+    height: 200px;
+    margin-top: 5px;
+    border: 1px solid #337AB7;
+}
+
+/*#get {
+    float: right;
+    font-size: 20px;
+    margin-right: 20px;
+    margin-top: 40px;
+}
+
+#shopping {
+    float: right;
+    font-size: 20px;
+    margin-right: 10px;
+    margin-top: 40px;
+}*/
+
+#right {
+    border: 2px solid #337AB7;
+    margin-top: 20px;
+    border-radius: 15px;
+
+}
+
+#left {
+    margin-top: 20px;
+}
+
+#title {
+    margin-left: 310px;
+    line-height: 60px;
+    height: 60px;
+}
+
+footer {
+    color: #999;
+    text-align: center;
+    font-size: 12px;
+    font-family: initial;
+    margin-top: 70px;
+}

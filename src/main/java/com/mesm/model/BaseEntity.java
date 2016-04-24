@@ -1,9 +1,6 @@
 package com.mesm.model;
 
-import javax.persistence.Column;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -20,7 +17,15 @@ public class BaseEntity {
     private Date updateAt;
 
     private Date deleteAt;
-
+    @PreUpdate
+    public void perUpdate(){
+       this.setUpdateAt(new Date());
+    }
+    @PrePersist
+    public void prePersist(){
+        this.setCreatAt(new Date());
+        this.setUpdateAt(new Date());
+    }
     @Column(name = "createAt")
     public Date getCreatAt() {
         return creatAt;
