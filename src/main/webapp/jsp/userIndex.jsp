@@ -32,31 +32,36 @@
     $(document).ready(function(){
 
         checklogin();
+        loadCart();
         function checklogin(){
 
             var user= <%=request.getSession().getAttribute("userName")%>;
+            var userId = '<%=request.getSession().getAttribute("userId")%>';
             if( user != null){
                 $("#notlogin").css("display","none");
                 $("#haslogin").css("display","");
             }
+            setUser(user,userId);
         };
 
-        function showSeller(){
 
-        }
         /*==================  */
         $("#type").change(function() {
-            var user = {
-                type:$("#type").val(),
-            };
-            loadGoods("good/listGoodByType?page=",user,1);
+
+            loadGoods("good/listGoodByType?page=",$("#type").val(),1);
+        });
+
+        $("#cart").click(function (){
+            if(user == null){
+                alert("请先登录!");
+                return;
+            }
+           $("#cartContent").slideToggle("slow");
         });
         /*=======================  */
         $("#search").click(function(){
-            var user = {
-                search:$("#searchContent").val(),
-            }
-            loadGoods("good/listGoodBySearch?page=",user,1);
+
+            loadGoods("good/listGoodBySearch?page=",$("#searchContent").val(),1);
         });
     });
 </script>
@@ -109,6 +114,18 @@
 
     </ul>
 </nav>
+<div id = "cartContent">
+    <div id="cartHead">
+        <strong>购物车</strong>
+    </div>
+    <div id="cartBody">
+        <table class='table table-striped'>
+            <thead id="thead"></thead>
+            <tbody id="tbody"></tbody>
+        </table>
+    </div>
+</div>
+<div id="cart" ><span class = "glyphicon glyphicon-shopping-cart"></span></div>
 <footer><small>长沙理工大学计算机与通信工程学院</small><br>
     <small>201258080208</small><br>
     <small>侯润哲</small>

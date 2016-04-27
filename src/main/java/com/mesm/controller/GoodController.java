@@ -35,7 +35,7 @@ public class GoodController {
             String userName = (String) rq.getSession().getAttribute("userName");
             Seller seller = sellerRepository.findByUserName(userName);
             good.setSeller(seller);
-            good.setPrice(0);
+            good.setSales(0);
             good.setAppraiseTotal(0);
             goodRepository.save(good);
             return "success";
@@ -86,10 +86,10 @@ public class GoodController {
 
     @ResponseBody
     @RequestMapping(value = "/listGoodByType", method = RequestMethod.POST)
-    public Map<String ,Object> listByType(String type,int page,HttpServletRequest rq){
+    public Map<String ,Object> listByType(String content,int page,HttpServletRequest rq){
         try {
 
-            int count = goodRepository.findCountBytype(type);
+            int count = goodRepository.findCountBytype(content);
             int pageCount = (int)Math.ceil((double)count/12);
 
             if(page > pageCount){
@@ -100,7 +100,7 @@ public class GoodController {
                 page = 1;
             }
             PageRequest pageRequest = new PageRequest(page-1,12);
-            Page<Good> goods = goodRepository.findByType(type,pageRequest);
+            Page<Good> goods = goodRepository.findByType(content,pageRequest);
             Map<String,Object> map = new HashMap<String,Object>();
             map.put("page",page);
             map.put("pageCount",pageCount);
@@ -114,10 +114,10 @@ public class GoodController {
 
     @ResponseBody
     @RequestMapping(value = "/listGoodBySearch", method = RequestMethod.POST)
-    public Map<String ,Object> listBySearch(String search,int page,HttpServletRequest rq){
+    public Map<String ,Object> listBySearch(String content,int page,HttpServletRequest rq){
         try {
 
-            int count = goodRepository.findCountBySearch(search);
+            int count = goodRepository.findCountBySearch("%"+content+"%");
             int pageCount = (int)Math.ceil((double)count/12);
             if(page > pageCount){
                 page = pageCount;
@@ -126,7 +126,7 @@ public class GoodController {
                 page = 1;
             }
             PageRequest pageRequest = new PageRequest(page-1,12);
-            Page<Good> goods = goodRepository.findBySearch("%"+search+"%",pageRequest);
+            Page<Good> goods = goodRepository.findBySearch("%"+content+"%",pageRequest);
             Map<String,Object> map = new HashMap<String,Object>();
             map.put("page",page);
             map.put("pageCount",pageCount);

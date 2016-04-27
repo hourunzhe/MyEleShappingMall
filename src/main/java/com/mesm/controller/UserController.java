@@ -30,6 +30,7 @@ public class UserController {
                 return "notexist";
             } else {
                 rq.getSession().setAttribute("userName", userName);
+                rq.getSession().setAttribute("userId", user.getId());
                 return "exist";
             }
         } catch (Exception e) {
@@ -48,6 +49,7 @@ public class UserController {
                 user.setPassword(MD5Util.MD5(user.getPassword()));
                 userRepository.save(user);
                 rq.getSession().setAttribute("userName", user.getUserName());
+                rq.getSession().setAttribute("userId", user.getId());
                 return "success";
             } else {
                 return "exist";

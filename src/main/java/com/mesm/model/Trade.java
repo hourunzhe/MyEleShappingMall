@@ -3,6 +3,7 @@ package com.mesm.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by hrz on 2016/4/12.
@@ -16,6 +17,32 @@ public class Trade extends BaseEntity{
     private Seller seller;
     private int state;
     private int count;
+
+    public Trade() {
+    }
+
+    public Trade(String id,String goodId,float price,String photo,String goodName,int count) {
+        this.id = id;
+        Good good = new Good();
+        good.setPhoto(photo);
+        good.setGoodName(goodName);
+        good.setId(goodId);
+        good.setPrice(price);
+        this.good = good;
+        this.count = count;
+    }
+    public Trade(String id,String goodId,float price,String photo,String goodName,int count,Date updateAt,int state) {
+        this.setUpdateAt(updateAt);
+        this.id = id;
+        this.state = state;
+        Good good = new Good();
+        good.setPhoto(photo);
+        good.setGoodName(goodName);
+        good.setId(goodId);
+        good.setPrice(price);
+        this.good = good;
+        this.count = count;
+    }
     @Id
     @Column(name = "id")
     @GeneratedValue(generator = "uuid")
