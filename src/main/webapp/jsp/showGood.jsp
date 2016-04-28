@@ -59,8 +59,16 @@
                 }
                 $("#cartContent").slideToggle("slow");
             });
-
-
+            $("#info").click(function(){
+                $("#info").addClass("active");
+                $("#discuss").removeClass("active");
+                loadGoodDescription();
+            });
+            $("#discuss").click(function(){
+                $("#discuss").addClass("active");
+                $("#info").removeClass("active");
+                loadDiscuss(1);
+            });
             $("#top").on("click", "#shopping", function () {
                 addInCart(id);
             });
@@ -87,9 +95,9 @@
     </div>
     <ul id="left"
         class="nav nav-pills nav-stacked col-lg-offset-1 col-lg-2 col-md-offset-1 col-md-2 col-sm-3 col-sm-offset-1 col-xs-12">
-        <li role="presentation" class="active"><a href="#"><span class="glyphicon glyphicon-gift"></span>&nbsp;&nbsp;&nbsp;商品详情</a>
+        <li role="presentation" id ='info' class="active"><a href="javascript:void(0);"><span class="glyphicon glyphicon-gift"></span>&nbsp;&nbsp;&nbsp;商品详情</a>
         </li>
-        <li role="presentation"><a href="#"><span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;&nbsp;顾客评论</a>
+        <li role="presentation" id = 'discuss'><a href="javascript:void(0);"><span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;&nbsp;顾客评论</a>
         </li>
     </ul>
     <div id="right" class="container-fluid  col-lg-9  col-md-9 col-sm-8  col-xs-12">
@@ -113,7 +121,7 @@
 </div>
 <div id="cart" ><span class = "glyphicon glyphicon-shopping-cart"></span></div>
 
-<footer>
+<footer id = "foot">
     <small>长沙理工大学计算机与通信工程学院</small>
     <br>
     <small>201258080208</small>

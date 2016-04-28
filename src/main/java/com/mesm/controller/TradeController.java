@@ -186,4 +186,15 @@ public class TradeController {
             return null;
         }
     }
+    @ResponseBody
+    @RequestMapping(value = "loadGoodInfo",method = RequestMethod.POST)
+    public Trade loadGoodInfo(String id){
+        try{
+            Trade trade = tradeRepository.findById(id);
+            return trade;
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

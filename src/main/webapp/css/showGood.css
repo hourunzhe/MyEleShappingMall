@@ -99,7 +99,7 @@
 #delete,#order{
     cursor:pointer;
 }
-footer {
+#foot {
     color: #999;
     text-align: center;
     font-size: 12px;

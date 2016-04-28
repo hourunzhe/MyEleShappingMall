@@ -3,6 +3,7 @@ package com.mesm.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by hrz on 2016/4/12.
@@ -15,6 +16,17 @@ public class Appraise extends BaseEntity{
     private User user;
     private Seller seller;
     private String content;
+
+    public Appraise() {
+    }
+    public Appraise(String id,String userName,String content,Date creatAt) {
+        this.id=id;
+        User user = new User();
+        user.setUserName(userName);
+        this.user = user;
+        this.content=content;
+        this.setCreatAt(creatAt);
+    }
     @Id
     @Column(name = "id")
     @GeneratedValue(generator = "uuid")
