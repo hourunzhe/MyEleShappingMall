@@ -29,6 +29,7 @@
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="js/showGood.js"></script>
+    <script src="js/userIndex.js"></script>
     <link rel="stylesheet" href="css/showGood.css">
     <style>
 
@@ -37,13 +38,31 @@
         $(document).ready(function () {
 
             var id = '<%=request.getParameter("goodId")%>';
+
             loadGood(id);
-            $("#top").on("click", "#update", function () {
-                location.href = "jsp/sellerUpdate.jsp?sellerId=" + sellerId;
+            checkLogin();
+            loadCart();
+            function checkLogin(){
+
+                var user= <%=request.getSession().getAttribute("userName")%>;
+                var userId = '<%=request.getSession().getAttribute("userId")%>';
+                if( user != null){
+                    $("#notlogin").css("display","none");
+                    $("#haslogin").css("display","");
+                }
+                setUser(user,userId);
+            };
+            $("#cart").click(function (){
+                if(user == null){
+                    alert("请先登录!");
+                    return;
+                }
+                $("#cartContent").slideToggle("slow");
             });
 
-            $("#top").on("click", "#add", function () {
-                location.href = "jsp/goodAdd.jsp";
+
+            $("#top").on("click", "#shopping", function () {
+                addInCart(id);
             });
         });
 
@@ -55,6 +74,13 @@
         <div class="" id="limit"><strong style="font-size:30px;color:#337AB7">&nbsp;&nbsp;&nbsp;&nbsp;我的电商</strong>
         </div>
         <div class="" id="title" style="">商品详情</div>
+        <div id = "notlogin"  style="float:right;margin-right:20px;margin-top:-45px">
+            <a class="btn btn-info " href="jsp/register.jsp"style="margin-right:20px" role="button"> 注册</a>
+            <a class="btn btn-info " href="jsp/login.jsp" role="button" > 登录</a>
+        </div>
+        <div id = "haslogin" style = "float:right; display:none;margin-right:20px;margin-top:-40px" >
+            用户：<%=request.getSession().getAttribute("userName")%>&nbsp; | &nbsp;<a id = "listOrder" href = "jsp/listOrder.jsp">您的订单<span class ="glyphicon glyphicon-list-alt"></span></a>
+        </div>
     </div>
     <div id="top" class="container-fluid">
 
@@ -69,11 +95,24 @@
     <div id="right" class="container-fluid  col-lg-9  col-md-9 col-sm-8  col-xs-12">
     </div>
     <nav class="col-lg-offset-3 col-md-offset-3 col-sm-offset-4">
-        <ul class="pagination" id = "pageDiv">
+        <ul class="pagination" id = "pageDiscuss">
 
         </ul>
     </nav>
 </div>
+<div id = "cartContent">
+    <div id="cartHead">
+        <strong>购物车</strong>
+    </div>
+    <div id="cartBody">
+        <table class='table table-striped'>
+            <thead id="thead"></thead>
+            <tbody id="tbody"></tbody>
+        </table>
+    </div>
+</div>
+<div id="cart" ><span class = "glyphicon glyphicon-shopping-cart"></span></div>
+
 <footer>
     <small>长沙理工大学计算机与通信工程学院</small>
     <br>

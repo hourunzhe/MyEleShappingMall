@@ -33,7 +33,7 @@ function loadTrade(tradeId) {
                 "<td style='height: 100px;line-height: 100px'>" + date + "</td>" +
                 "<td id = 'state' style='height: 100px;line-height: 100px'>" + state + "</td>" +
                 "<td style='height: 100px;line-height: 100px'><span id = 'delete' onclick ='deleteCart(\"" + data.id + "\")'style='color: red' class ='glyphicon glyphicon-trash'></span>&nbsp;&nbsp;" +
-                "<span id = 'pay' onclick ='pay(\"" + data.id + "\")'style='color: #337AB7' class ='glyphicon glyphicon-list-alt'></span>" +
+                "<span id = 'pay' onclick ='pay(\"" + data.id + "\")'style='color: #337AB7' class ='glyphicon glyphicon-yen'></span>" +
                 "</td>" +
                 "</tr>"
             );
@@ -51,8 +51,14 @@ function pay(tradeId){
         success: function (data) {
             if (data == "success") {
                 alert("支付成功!");
-                $("#state").html("<strong style='color: green;'>支付成功</strong>")
-            } else {
+                $("#state").html("<strong style='color: green;'>支付成功</strong>");
+                return ;
+            }
+            if (data == "hadPay"){
+                alert("您已经支付了该订单!");
+                return;
+            }
+            if(data == "fail"){
                 alert("支付失败!");
             }
         }

@@ -9,7 +9,7 @@
 <head>
     <base href="<%=basePath%>">
 
-    <title>商品详情</title>
+    <title>全部订单</title>
 
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
@@ -28,16 +28,16 @@
 
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="js/order.js"></script>
-    <link rel="stylesheet" href="css/order.css">
+    <script src="js/listOrder.js"></script>
+    <link rel="stylesheet" href="css/listOrder.css">
     <style>
 
     </style>
     <script type="text/javascript">
         $(document).ready(function () {
-            var tradeId = '<%=request.getParameter("tradeId")%>';
-            loadTrade(tradeId);
+            loadOrderForUser(1);
         });
+
 
     </script>
 </head>
@@ -46,25 +46,30 @@
     <div class="row" id="head">
         <div class="" id="limit"><strong style="font-size:30px;color:#337AB7">&nbsp;&nbsp;&nbsp;&nbsp;我的电商</strong>
         </div>
-        <div class="" id="title" style="">订单详情</div>
+        <div class="" id="title" style="">全部订单</div>
     </div>
-<h1><strong>订单详情：</strong></h1>
+    <h1><strong>您的订单：</strong></h1>
     <table style = 'margin-top: 10px' class='table table-bordered'>
         <thead id="thead">
-            <tr>
-                <th>宝贝</th>
-                <th>单价（元）</th>
-                <th>数量</th>
-                <th>实付款</th>
-                <th>下单时间</th>
-                <th>交易状态</th>
-                <th>操作</th>
-            </tr>
+        <tr>
+            <th>宝贝</th>
+            <th>单价（元）</th>
+            <th>数量</th>
+            <th>实付款</th>
+            <th>下单时间</th>
+            <th>交易状态</th>
+            <th>操作</th>
+        </tr>
         </thead>
         <tbody id="tbody">
 
         </tbody>
     </table>
+    <nav class="col-lg-offset-3 col-md-offset-3 col-sm-offset-4">
+        <ul class="pagination" id = "pageDiv">
+
+        </ul>
+    </nav>
 </div>
 <footer>
     <small>长沙理工大学计算机与通信工程学院</small>

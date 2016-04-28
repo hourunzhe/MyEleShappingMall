@@ -46,6 +46,17 @@
             $("#top").on("click", "#add", function () {
                 location.href = "jsp/goodAdd.jsp";
             });
+            $("#showGoods").click(function(){
+                $("#showGoods").addClass("active");
+                $("#showOrders").removeClass("active");
+                loadGoods(1);
+            });
+
+            $("#showOrders").click(function(){
+                $("#showGoods").removeClass("active");
+                $("#showOrders").addClass("active");
+                showOrders(1);
+            });
         });
 
     </script>
@@ -62,12 +73,13 @@
     </div>
     <ul id="left"
         class="nav nav-pills nav-stacked col-lg-offset-1 col-lg-2 col-md-offset-1 col-md-2 col-sm-3 col-sm-offset-1 col-xs-12">
-        <li role="presentation" class="active"><a href="#"><span class="glyphicon glyphicon-gift"></span>&nbsp;&nbsp;&nbsp;我的商品</a>
+        <li role="presentation" id = "showGoods" class="active"><a href="javascript:void(0)"  ><span class="glyphicon glyphicon-gift"></span>&nbsp;&nbsp;&nbsp;我的商品</a>
         </li>
-        <li role="presentation"><a href="#"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;&nbsp;我的订单</a>
+        <li role="presentation" id = "showOrders"><a href="javascript:void(0)" ><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;&nbsp;我的订单</a>
         </li>
     </ul>
     <div id="right" class="container-fluid  col-lg-9  col-md-9 col-sm-8  col-xs-12">
+
     </div>
     <nav class="col-lg-offset-3 col-md-offset-3 col-sm-offset-4">
         <ul class="pagination" id = "pageDiv">

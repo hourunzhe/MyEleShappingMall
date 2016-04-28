@@ -23,7 +23,6 @@ function loadGood(id){
                 "<div id = 'address'><span id = 'address_img'" +
                 " class = 'col-lg-offset-1 col-md-offset-1 col-sm-offset-1  glyphicon glyphicon-usd'>" +
                 "</span>&nbsp;&nbsp;&nbsp;已售&nbsp;<strong style='color: red'>" + data.sales + "</strong>&nbsp;件</div>" +
-                "<button type='submit' id = 'get' class='col-lg-offset-1 col-md-offset-1 col-sm-offset-1 btn btn-primary'><span class ='glyphicon glyphicon-pencil'>&nbsp;立即购买</span></button>" +
                 "<button type='submit' id = 'shopping' class='col-lg-offset-1 col-md-offset-1 col-sm-offset-1 btn btn-warning'><span class ='glyphicon glyphicon-shopping-cart'></span>&nbsp;&nbsp;加入购物车</button>" +
                 "");
             $("#right").append(""+data.description);

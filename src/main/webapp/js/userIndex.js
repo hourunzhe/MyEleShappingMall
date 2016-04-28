@@ -107,7 +107,7 @@ function loadCart() {
                     $("#tbody").append(
                         "<tr id ='" + data[i].id + "'>" +
                         "<td>" +
-                        "<img id ='photo' width='25px',height='25px' src='http://localhost:8080/MyEleShoppingMall/uploadPicture/" + data[i].good.photo + "' " +
+                        "<img  width='25px',height='25px' src='http://localhost:8080/MyEleShoppingMall/uploadPicture/" + data[i].good.photo + "' " +
                         "class='img-rounded'>" +
                         "</td>" +
                         "<td  style='font-size: 10px'><a href ='jsp/showGood.jsp?goodId=" + data[i].good.id + "'>" + data[i].good.goodName + "</a></td>" +
@@ -120,6 +120,7 @@ function loadCart() {
                     )
                 }
             }
+            
         }
     });
 }

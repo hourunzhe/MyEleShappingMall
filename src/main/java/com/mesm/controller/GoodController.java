@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -76,7 +77,9 @@ public class GoodController {
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public String delete(String id){
         try{
-            goodRepository.delete(id);
+            Good good = goodRepository.findOne(id);
+            good.setDeleteAt(new Date());
+            goodRepository.save(good);
             return "success";
         } catch (Exception e) {
             e.printStackTrace();
