@@ -103,7 +103,7 @@
             <a class="btn btn-info navbar-btn" href="jsp/login.jsp" role="button" > 登录</a>
         </div>
         <div id = "haslogin" style = "display:none;margin-right:20px;color:white" class="navbar-text navbar-right">
-            用户：<%=request.getSession().getAttribute("userName")%>&nbsp; | &nbsp;<a id = "listOrder" href = "jsp/listOrder.jsp">您的订单<span class ="glyphicon glyphicon-list-alt"></span></a>
+            用户：<%=request.getSession().getAttribute("userName")%>&nbsp;| &nbsp;<a id = "listOrder" href = 'user/logout'>注销</a>&nbsp; | &nbsp;<a id = "listOrder" href = "jsp/listOrder.jsp">您的订单<span class ="glyphicon glyphicon-list-alt"></span></a>
         </div>
     </div>
 

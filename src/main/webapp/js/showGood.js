@@ -55,6 +55,10 @@ function loadDiscuss(page) {
         data: appraise,
         type: "post",
         success: function (data) {
+            if(data.appraises.length == 0){
+                $("#right").append("<strong>还没有任何人评论过该商品!</strong>");
+                return;
+            }
             for (var i = 0; i < data.appraises.length; i++) {
                 var date = new Date(data.appraises[i].creatAt);
                 date = date.Format("yyyy-MM-dd hh:mm:ss");
@@ -71,6 +75,9 @@ function loadDiscuss(page) {
     })
 }
 function loadDescussPage(pageCount, page) {
+    if(pageCount == 0){
+        return;
+    }
     $("#pageDiscuss").html("");
     $("#pageDiscuss").append(
         "<li>" +

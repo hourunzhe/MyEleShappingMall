@@ -43,7 +43,7 @@ public class ApplicationConfiguration {
   DataSource dataSource(Environment env) {
     BasicDataSource dataSource = new BasicDataSource();
     dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-    dataSource.setUrl("jdbc:mysql://localhost:3306/mesm?useUnicode=true&amp;characterEncoding=UTF-8");
+    dataSource.setUrl("jdbc:mysql://localhost:3306/mesm?useUnicode=true&characterEncoding=UTF-8");
     dataSource.setUsername("hrz");
     dataSource.setPassword("798881262");
     return dataSource;

@@ -16,7 +16,11 @@
     line-height: 60px;
     height: 60px;
 }
-
+#logout{
+    float:right;
+    margin-right: 20px;
+    margin-top: -40px;
+}
 #delete,#pay{
     cursor:pointer;
 }

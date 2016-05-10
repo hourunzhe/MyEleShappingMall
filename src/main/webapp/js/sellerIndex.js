@@ -24,13 +24,25 @@ function loadFirst(sellerName) {
 
 
 function loadTop(data) {
+    var img='';
+    if(data.photo == null || data.photo ==''){
+        img = 'http://localhost:8080/MyEleShoppingMall/uploadPicture/noPhoto.jpg';
+    }else{
+        img ='http://localhost:8080/MyEleShoppingMall/uploadPicture/'+data.photo;
+    }
+    var phone='';
+    if(data.phone == null||data.phone ==''){
+        phone = '未填写';
+    }else{
+        phone = data.phone;
+    }
     $("#top").append(
         "<div id = 'sellerName' class = ''>" + data.sellerName + "</div>" +
-        "<img id ='photo'  src='http://localhost:8080/MyEleShoppingMall/uploadPicture/" + data.photo + "'" +
+        "<img id ='photo'  src='"+img+"'" +
         "class='img-rounded col-lg-offset-1 col-md-offset-1'>" +
         "<div id = 'phone'><span id = 'phone_img'" +
         " class = 'col-lg-offset-1 col-md-offset-1 col-sm-offset-1  glyphicon glyphicon-earphone'>" +
-        "</span>&nbsp;&nbsp;&nbsp;" + data.phone + "</div>" +
+        "</span>&nbsp;&nbsp;&nbsp;" + phone + "</div>" +
         "<div id = 'type'><span id = 'type_img'" +
         " class = 'col-lg-offset-1 col-md-offset-1 col-sm-offset-1  glyphicon glyphicon-th'>" +
         "</span>&nbsp;&nbsp;&nbsp;" + data.type + "</div>" +
@@ -65,6 +77,9 @@ function loadGoods(page){
             var goods = data.goods;
             var pageCount = data.pageCount;
             var nowPage = data.page;
+            if(goods.length == 0){
+                $("#right").append("<strong>你还么有发布任何商品，赶紧去添加吧!</strong>");
+            }
             for(var i = 0; i<goods.length; i++) {
                 var goodId = "'"+goods[i].id+"'";
                 $("#right").append(
@@ -94,6 +109,9 @@ function loadGoods(page){
 
 }
 function loadPage(pageCount,page){
+    if(pageCount == 0){
+        return;
+    }
     $("#pageDiv").html("");
     $("#pageDiv").append(
         "<li>"+
@@ -143,7 +161,7 @@ function showOrders(page){
             $("#tbody").html("");
             pageCount = data.pageCount;
             if (data.trades == ""){
-                $("#right").append("<stong>还没有人买你的商品</stong>")
+                $("#right").append("<strong>还没有人买你的商品!</strong>")
             }else {
                 $("#right").append(
                     "<table style = 'margin-top: 10px' class='table table-bordered'>" +

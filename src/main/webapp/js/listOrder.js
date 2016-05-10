@@ -117,6 +117,9 @@ function discuss(tradeId) {
     location.href = "jsp/discuss.jsp?tradeId="+tradeId;
 }
 function loadPage(pageCount, page) {
+    if(pageCount == 0){
+        return;
+    }
     $("#pageDiv").html("");
     $("#pageDiv").append(
         "<li>" +

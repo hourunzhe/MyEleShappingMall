@@ -36,8 +36,16 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
-            var sellerName = <%=request.getSession().getAttribute("userName")%>;
+            var sellerName = '<%=request.getSession().getAttribute("userName")%>';
             var sellerId = '<%=request.getSession().getAttribute("sellerId")%>';
+            checkLogin(sellerId);
+            function checkLogin(sellerId){
+                if(sellerId == 'null'){
+                    location.href = 'jsp/login.jsp';
+                }else{
+                    return;
+                }
+            }
             loadFirst(sellerName);
             $("#top").on("click", "#update", function () {
                 location.href = "jsp/sellerUpdate.jsp?sellerId=" + sellerId;
@@ -67,6 +75,7 @@
         <div class="" id="limit"><strong style="font-size:30px;color:#337AB7">&nbsp;&nbsp;&nbsp;&nbsp;我的电商</strong>
         </div>
         <div class="" id="title" style="">商家首页</div>
+        <div id = 'logout' ><a href="seller/logout">注销</a></div>
     </div>
     <div id="top" class="container-fluid">
 

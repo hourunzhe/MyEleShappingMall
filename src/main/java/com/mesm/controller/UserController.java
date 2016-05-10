@@ -39,6 +39,18 @@ public class UserController {
         }
     }
 
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String login(HttpServletRequest rq) {
+        try {
+            rq.getSession().removeAttribute("userName");
+            rq.getSession().removeAttribute("userId");
+            return "login";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "fail";
+        }
+    }
+
     @ResponseBody
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String register(User user, HttpServletRequest rq) {

@@ -36,6 +36,9 @@
     <script type="text/javascript">
         $(document).ready(function () {
             loadOrderForUser(1);
+            $("#return").click(function(){
+                location.href="jsp/userIndex.jsp";
+            });
         });
 
 
@@ -46,7 +49,8 @@
     <div class="row" id="head">
         <div class="" id="limit"><strong style="font-size:30px;color:#337AB7">&nbsp;&nbsp;&nbsp;&nbsp;我的电商</strong>
         </div>
-        <div class="" id="title" style="">全部订单</div>
+        <div class="" id="title" style="">全部订单 &nbsp;| &nbsp;<a id = 'return' href="javascript:void(0);">返回首页</a></div>
+        <div id = 'logout' ><a href="seller/logout">注销</a></div>
     </div>
     <h1><strong>您的订单：</strong></h1>
     <table style = 'margin-top: 10px' class='table table-bordered'>

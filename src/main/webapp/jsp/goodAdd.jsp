@@ -53,6 +53,7 @@
         <div class="" id="limit"><strong style="font-size:30px;color:#337AB7">&nbsp;&nbsp;&nbsp;&nbsp;我的电商</strong>
         </div>
         <div class="" id="title" style="">商品添加</div>
+        <div id = 'logout' ><a href="seller/logout">注销</a></div>
     </div>
     <form class="form-horizontal" id="form" action="" method="post">
         <div class="alert alert-danger col-sm-12 col-xs-12" role="alert" id="warn" style="display:none;">

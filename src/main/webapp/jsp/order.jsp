@@ -37,6 +37,9 @@
         $(document).ready(function () {
             var tradeId = '<%=request.getParameter("tradeId")%>';
             loadTrade(tradeId);
+            $("#return").click(function(){
+                location.href="jsp/userIndex.jsp";
+            });
         });
 
     </script>
@@ -46,7 +49,8 @@
     <div class="row" id="head">
         <div class="" id="limit"><strong style="font-size:30px;color:#337AB7">&nbsp;&nbsp;&nbsp;&nbsp;我的电商</strong>
         </div>
-        <div class="" id="title" style="">订单详情</div>
+        <div class="" id="title" style="">订单详情 &nbsp;| &nbsp;<a id = 'return' href="javascript:void(0);">返回首页</a></div>
+        <div id = 'logout' ><a href="user/logout">注销</a></div>
     </div>
 <h1><strong>订单详情：</strong></h1>
     <table style = 'margin-top: 10px' class='table table-bordered'>

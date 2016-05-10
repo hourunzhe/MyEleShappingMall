@@ -11,7 +11,11 @@
     margin-bottom: 10px;
     float: left;
 }
-
+#logout{
+    float:right;
+    margin-right: 20px;
+    margin-top: -40px;
+}
 #top {
     border: 2px solid #337AB7;
     margin-top: 10px;
@@ -63,7 +67,7 @@
     border: 2px solid #337AB7;
     margin-top: 20px;
     border-radius: 15px;
-
+    min-height: 500px;
 }
 
 #left {

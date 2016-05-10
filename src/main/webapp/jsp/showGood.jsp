@@ -72,6 +72,9 @@
             $("#top").on("click", "#shopping", function () {
                 addInCart(id);
             });
+            $("#return").click(function(){
+               location.href="jsp/userIndex.jsp";
+            });
         });
 
     </script>
@@ -81,13 +84,13 @@
     <div class="row" id="head">
         <div class="" id="limit"><strong style="font-size:30px;color:#337AB7">&nbsp;&nbsp;&nbsp;&nbsp;我的电商</strong>
         </div>
-        <div class="" id="title" style="">商品详情</div>
+        <div class="" id="title" style="">商品详情 &nbsp;| &nbsp;<a id = 'return' href="javascript:void(0);">返回首页</a></div>
         <div id = "notlogin"  style="float:right;margin-right:20px;margin-top:-45px">
             <a class="btn btn-info " href="jsp/register.jsp"style="margin-right:20px" role="button"> 注册</a>
             <a class="btn btn-info " href="jsp/login.jsp" role="button" > 登录</a>
         </div>
         <div id = "haslogin" style = "float:right; display:none;margin-right:20px;margin-top:-40px" >
-            用户：<%=request.getSession().getAttribute("userName")%>&nbsp; | &nbsp;<a id = "listOrder" href = "jsp/listOrder.jsp">您的订单<span class ="glyphicon glyphicon-list-alt"></span></a>
+            用户：<%=request.getSession().getAttribute("userName")%>&nbsp;| &nbsp;<a href = 'user/logout'>注销</a>&nbsp; | &nbsp;<a id = "listOrder" href = "jsp/listOrder.jsp">您的订单<span class ="glyphicon glyphicon-list-alt"></span></a>
         </div>
     </div>
     <div id="top" class="container-fluid">

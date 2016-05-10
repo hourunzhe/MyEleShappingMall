@@ -11,6 +11,11 @@
     margin-bottom: 10px;
     float: left;
 }
+#logout{
+    float:right;
+    margin-right: 20px;
+    margin-top: -40px;
+}
 #title {
     margin-left: 310px;
     line-height: 60px;

@@ -35,7 +35,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 		contentNegotiationManager.addMediaType("json", MediaType.APPLICATION_JSON);
 
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-		viewResolver.setPrefix("/WEB-INF/jsp/");
+		viewResolver.setPrefix("/jsp/");
 		viewResolver.setSuffix(".jsp");
 		MappingJackson2JsonView defaultView = new MappingJackson2JsonView();
 		defaultView.setExtractValueFromSingleKeyModel(true);

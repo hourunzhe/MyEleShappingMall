@@ -89,8 +89,10 @@
 
             });
             /* 点击注册按钮 start*/
+            $("#return").click(function(){
+                location.href="jsp/sellerIndex.jsp";
+            });
             $("#regist").click(function () {
-                alert(sellerId);
                 var sellername = $("#sellername").val();
                 var type = $("#type").val();
                 var address = $("#address").val();
@@ -128,6 +130,7 @@
         <div class="" id="limit"><strong style="font-size:30px;color:#337AB7">&nbsp;&nbsp;&nbsp;&nbsp;我的电商</strong>
         </div>
         <div class="" id="title" style="">商家信息管理</div>
+        <div id = 'logout' ><a href="seller/logout">注销</a></div>
     </div>
     <form class="form-horizontal" id="form" action="" method="post">
         <div class="alert alert-danger col-sm-12 col-xs-12" role="alert" id="warn" style="display:none;">
@@ -184,8 +187,13 @@
             </div>
         </div>
     </form>
-    <div class="col-sm-offset-2 col-sm-3 col-xs-offset-2 col-xs-3">
+    <div class="col-sm-offset-2 col-sm-1 col-xs-offset-2 col-xs-1">
         <button type="submit" id="regist" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span>
+        </button>
+    </div>
+    <div class=" col-sm-1 col-xs-1">
+        <button type="submit" id="return" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span>
+            &nbsp;&nbsp;返回
         </button>
     </div>
 </div>
