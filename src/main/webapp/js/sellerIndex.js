@@ -83,10 +83,10 @@ function loadGoods(page){
             for(var i = 0; i<goods.length; i++) {
                 var goodId = "'"+goods[i].id+"'";
                 $("#right").append(
-                    "<div id ='"+goods[i].id+"' style ='margin-top: 10px' class='col-lg-4 col-md-4 col-sm-6 col-xs-6'>" +
+                    "<div id ='"+goods[i].id+"' style ='margin-top: 10px' class='item'>" +
                     "<div class='thumbnail'>" +
                         "<a class='thumbnail'>"+
-                    "<img width='500px' height='500px' " +
+                    "<img width='280px'  " +
                     "src='http://localhost:8080/MyEleShoppingMall/uploadPicture/"+goods[i].photo+"' alt=''>" +
                     "</a>"+
                     "<div class='caption'>" +
@@ -102,11 +102,24 @@ function loadGoods(page){
                     "</div>"
                 );
             }
+            loadImage();
             loadPage(pageCount,nowPage);
         }
 
     });
 
+}
+function loadImage(){
+    var $container ='';
+    $container = $('.masonry-container');
+    $container.masonry('reloadItems');
+    $container.imagesLoaded( 'appended', function () {
+        $container.masonry({
+            columnWidth: '.item',
+            itemSelector: '.item',
+
+        });
+    });
 }
 function loadPage(pageCount,page){
     if(pageCount == 0){

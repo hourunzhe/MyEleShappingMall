@@ -29,6 +29,8 @@
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="js/sellerIndex.js"></script>
+    <script src="js/masonry.js"></script>
+    <script src="js/imagesLoaded.js"></script>
     <link rel="stylesheet" href="css/sellerIndex.css">
     <style>
 
@@ -87,7 +89,7 @@
         <li role="presentation" id = "showOrders"><a href="javascript:void(0)" ><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;&nbsp;我的订单</a>
         </li>
     </ul>
-    <div id="right" class="container-fluid  col-lg-9  col-md-9 col-sm-8  col-xs-12">
+    <div id="right" class="masonry-container container-fluid  col-lg-9  col-md-9 col-sm-8  col-xs-12">
 
     </div>
     <nav class="col-lg-offset-3 col-md-offset-3 col-sm-offset-4">

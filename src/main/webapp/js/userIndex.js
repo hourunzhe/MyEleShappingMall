@@ -11,6 +11,7 @@ loadGoods("good/listGoodAll?page=", "", 1);
 
 function loadGoods(url, value, page) {
     $("#content").html("");
+
     $("#pageDiv").html("");
     var good = {
         content: value,
@@ -30,7 +31,7 @@ function loadGoods(url, value, page) {
             for (var i = 0; i < goods.length; i++) {
                 var goodId = "'" + goods[i].id + "'";
                 $("#content").append(
-                    "<div id ='" + goods[i].id + "' style ='margin-top: 10px' class='col-lg-3 col-md-3 col-sm-4 col-xs-6'>" +
+                    "<div id ='" + goods[i].id + "' style ='margin-top: 10px' class='col-lg-3 col-md-3 col-sm-4 col-xs-6 item'>" +
                     "<div class='thumbnail'>" +
                     "<a href='jsp/showGood.jsp?goodId=" + goods[i].id + "' class='thumbnail'>" +
                     "<img width='500px' height='500px' " +
@@ -38,7 +39,6 @@ function loadGoods(url, value, page) {
                     "</a>" +
                     "<div class='caption'>" +
                     "<h3><strong>" + goods[i].goodName + "</strong></h3>" +
-
                     "<div>" + goods[i].price + "&nbsp;&nbsp;<span class ='glyphicon glyphicon-yen'></span></div>" +
                     "<div >已售<strong style='color: red'>&nbsp;" + goods[i].sales + "&nbsp;</strong>件" +
                     "&nbsp;评论<strong style='color: red'>&nbsp;" + goods[i].appraiseTotal + "&nbsp;</strong>条" +
@@ -49,12 +49,23 @@ function loadGoods(url, value, page) {
                     "</div>"
                 );
             }
+            loadImage();
             loadPage(pageCount, nowPage, url, value);
 
         }
     });
 }
-
+function loadImage(){
+    var $container ='';
+     $container = $('.masonry-container');
+    $container.masonry('reloadItems');
+     $container.imagesLoaded( 'appended', function () {
+        $container.masonry({
+            columnWidth: '.item',
+            itemSelector: '.item'
+        });
+    });
+}
 function addInCart(goodId) {
     if (user == null) {
         alert("请登录!");

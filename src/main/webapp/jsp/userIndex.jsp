@@ -25,6 +25,8 @@
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="js/userIndex.js"></script>
+    <script src="js/masonry.js"></script>
+    <script src="js/imagesLoaded.js"></script>
     <link rel="stylesheet" href="css/userIndex.css">
 
 </head>
@@ -108,8 +110,8 @@
     </div>
 
 </nav>
-<div id="content" style="margin-top: 50px" class="container-fluid"></div>
-<nav class="">
+<div id="content" class = "masonry-container" style="margin-top: 50px" class="container-fluid"></div>
+<nav class="" style ="width:1000px">
     <ul class="pagination" id = "pageDiv">
 
     </ul>

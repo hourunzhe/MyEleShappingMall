@@ -30,7 +30,7 @@ public interface GoodRepository extends CrudRepository<Good, String> {
     @Query("select new Good(id,goodName,sales,price,photo,appraiseTotal) " +
             "from Good as g where g.goodName like ?1 and deleteAt = null order by g.creatAt desc ")
     Page<Good> findBySearch(String search, Pageable pageRequest);
-    @Query("select count(id) from Good as g")
+    @Query("select count(id) from Good as g where g.deleteAt = null")
     int findCount();
     @Query("select new Good(id,goodName,sales,price,photo,appraiseTotal) " +
             "from Good as g where g.deleteAt = null order by g.creatAt desc ")
